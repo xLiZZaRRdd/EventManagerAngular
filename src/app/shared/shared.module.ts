@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NotfoundComponent } from './components/notfound/notfound.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -9,8 +10,13 @@ import { NotfoundComponent } from './components/notfound/notfound.component';
     NotfoundComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
-  exports: []
+  exports: [    
+    FormsModule,
+    ReactiveFormsModule
+  ]
 })
 export class SharedModule { }
