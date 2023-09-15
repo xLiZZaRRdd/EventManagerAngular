@@ -9,7 +9,8 @@ import { HttpClient } from '@angular/common/http';
 })
 export class SwaggerApiService {
 
-  url : string = "https://localhost:7245/api/"
+  url : string = 'https://localhost:7245/api/'
+  urlLogin : string = 'https://localhost:7245/api/Auth/Login'
   urlRegister : string = 'https://localhost:7245/api/Auth/Register'
 
   constructor(private _httpClient : HttpClient) {}
@@ -17,6 +18,10 @@ export class SwaggerApiService {
 
   register(dataForm : any) : Observable<any> {
     return this._httpClient.post(this.urlRegister, dataForm)
+  }
+
+  login(dataForm : any) : Observable<any> {
+    return this._httpClient.post(this.urlLogin, dataForm)
   }
 
   update(id : number, user : User) : Observable<User> {

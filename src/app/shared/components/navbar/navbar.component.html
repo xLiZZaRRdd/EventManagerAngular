@@ -1,6 +1,12 @@
 <div class="navbar" style="background-color: mediumturquoise;">
-    <a routerLink="/">EventManager</a>
-    <button class="btn" routerLink="/events">go events</button>
-    <button class="btn" routerLink="/login">Se connecter</button>
-    <button class="btn" routerLink="/register">S'enregistrer</button>
+<a routerLink="/">
+  <img src="assets/images/event_manager.png" alt="Logo" style="width: 120px; height: 40px;">
+</a>
+    <button class="btn" routerLink="/events">EVENTS</button>
+
+    <div class="flex flex-col items-center mb-6">
+        <span *ngIf="displayUser()">Bonjour {{displayUser()}}</span>
+        <button *ngIf="!displayUser()" class="btn" routerLink="/account/login">Se connecter</button>
+        <button *ngIf="displayUser()" class="btn" (click)="logout()" routerLink="/">Se déconnecter</button>
+    </div>
 </div>

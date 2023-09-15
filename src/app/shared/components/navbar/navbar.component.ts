@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { User } from '../../models/user';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-navbar',
@@ -7,4 +9,17 @@ import { Component } from '@angular/core';
 })
 export class NavbarComponent {
 
+  connectedUser : User | undefined;
+
+  constructor(private _authService : AuthService) {
+  }
+
+  displayUser() : string | undefined{
+    return this._authService.getUser()
+  }
+
+  logout() : void {
+    this._authService.deleteToken()
+    localStorage.clear()
+  }
 }

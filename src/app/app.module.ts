@@ -5,23 +5,22 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './shared/components/home/home.component';
 import { NavbarComponent } from './shared/components/navbar/navbar.component';
 import { FooterComponent } from './shared/components/footer/footer.component';
-import { RegisterComponent } from './register/register.component';
 import { SharedModule } from './shared/shared.module';
-import { LoginComponent } from './login/login.component';
+import { HttpClientModule } from '@angular/common/http';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     NavbarComponent,
-    FooterComponent,
-    RegisterComponent,
-    LoginComponent
+    FooterComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    SharedModule
+    SharedModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
