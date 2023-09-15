@@ -1,13 +1,15 @@
-<div class="navbar" style="background-color: mediumturquoise;">
-<a routerLink="/">
-  <img src="assets/images/event_manager.png" alt="Logo" style="width: 120px; height: 40px;">
-</a>
-    <button class="btn" routerLink="/events/events-incoming">EVENTS INC</button>
-    <button *ngIf="connectedUser" class="btn" routerLink="/events/my-events">MY EVENTS</button>
+<div class="navbar" style="background-color: plum;">
+  <div class="navbarItems">
+      <a routerLink="/">
+    <img src="assets/images/event_manager.png" alt="Logo" style="width: 120px; height: 40px;">
+  </a>
+  <button class="btn" routerLink="/events/events-incoming">Les évènements</button>
+  <button *ngIf="connectedUser" class="btn" routerLink="/events/my-events">Vos évènements</button>
 
-    <div class="flex flex-col items-center mb-6">
-        <span *ngIf="connectedUser">Bonjour {{connectedUser.pseudo}}</span>
-        <button *ngIf="!connectedUser" class="btn" routerLink="/account/login">Se connecter</button>
-        <button *ngIf="connectedUser" class="btn" (click)="logout()">Se déconnecter</button>
-    </div>
+  <div class="flex flex-col items-center mb-6">
+      <span *ngIf="connectedUser">Bonjour {{connectedUser.pseudo}}</span>
+      <button *ngIf="!connectedUser" class="btn" routerLink="/account/login">Se connecter</button>
+      <button *ngIf="connectedUser" class="btn" (click)="logout()">Se déconnecter</button>
+  </div>
+  </div>
 </div>
