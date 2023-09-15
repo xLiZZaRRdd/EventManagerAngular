@@ -2,11 +2,12 @@
 <a routerLink="/">
   <img src="assets/images/event_manager.png" alt="Logo" style="width: 120px; height: 40px;">
 </a>
-    <button class="btn" routerLink="/events">EVENTS</button>
+    <button class="btn" routerLink="/events/events-incoming">EVENTS INC</button>
+    <button *ngIf="connectedUser" class="btn" routerLink="/events/my-events">MY EVENTS</button>
 
     <div class="flex flex-col items-center mb-6">
-        <span *ngIf="displayUser()">Bonjour {{displayUser()}}</span>
-        <button *ngIf="!displayUser()" class="btn" routerLink="/account/login">Se connecter</button>
-        <button *ngIf="displayUser()" class="btn" (click)="logout()" routerLink="/">Se déconnecter</button>
+        <span *ngIf="connectedUser">Bonjour {{connectedUser.pseudo}}</span>
+        <button *ngIf="!connectedUser" class="btn" routerLink="/account/login">Se connecter</button>
+        <button *ngIf="connectedUser" class="btn" (click)="logout()">Se déconnecter</button>
     </div>
 </div>

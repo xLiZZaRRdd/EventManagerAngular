@@ -1,18 +1,23 @@
-import { CanActivateFn } from '@angular/router';
-import { AuthService } from '../services/auth.service';
-import { Router } from '@angular/router';
+import { Router, CanActivateFn } from '@angular/router';
 import { inject } from '@angular/core';
+import { SwaggerApiService } from '../services/swagger-api.service';
+import { map } from 'rxjs';
 
-export const ConnectedGuard: CanActivateFn = () => {
+export const connectedGuard: CanActivateFn = () => {
   const router = inject(Router)
-  const authService = inject(AuthService)
-
-  if (authService.aliveToken()){
-    return true;
-  }
-  
-  else {
-    router.navigateByUrl("account/login")
-    return false;
-  }
+  const swaggerService = inject(SwaggerApiService)
+ 
+  return swaggerService.$connectedUser.pipe(map((user) => {
+    console.log(user);
+    
+    if(user){
+      console.log("Banane");
+      return true;
+    }
+    else{
+      console.log("Billy");
+      router.navigateByUrl("account/login")
+      return false;
+    }
+  }))
 };

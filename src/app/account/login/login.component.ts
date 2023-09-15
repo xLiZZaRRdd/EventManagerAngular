@@ -1,8 +1,6 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { SwaggerApiService } from 'src/app/shared/services/swagger-api.service';
-import { AuthService } from 'src/app/shared/services/auth.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -12,10 +10,10 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent {
 
-  router = inject(Router)
   loginForm : FormGroup;
+  router = inject(Router)
 
-  constructor(private _fb : FormBuilder, private _swaggerService : SwaggerApiService, private _authService : AuthService) {
+  constructor(private _fb : FormBuilder, private _swaggerService : SwaggerApiService) {
     this.loginForm = this._fb.group({
       identifier : [null, [Validators.required]],
       password : [null, [Validators.required]]
@@ -29,8 +27,9 @@ export class LoginComponent {
       this._swaggerService.login(this.loginForm.value).subscribe({
         next : (rep) => {
           console.log("Tout est top pour le login", rep)
-          this._authService.getToken(rep.token)
-          this._authService.setUser(rep.member.pseudo)
+          //token et idUser à mettre dans le localstorage
+          localStorage.setItem('myToken', rep.token)
+          localStorage.setItem('userId', rep.member.id.toString())
           this.router.navigateByUrl("/")
         },
 
