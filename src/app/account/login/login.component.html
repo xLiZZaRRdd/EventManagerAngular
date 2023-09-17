@@ -17,6 +17,8 @@
 
        <div>
             <input class="btn" type="submit" value="Connexion">
+            <span style="color: red;"
+            *ngIf="!match_IsFailed">Mauvaise entrée et/où mauvais mot de passe</span>
         </div>
     </form>
 </div>

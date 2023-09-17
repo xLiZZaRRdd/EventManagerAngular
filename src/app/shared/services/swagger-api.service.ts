@@ -27,8 +27,7 @@ export class SwaggerApiService {
   login(dataForm : any) : Observable<UserToken> {
     return this._httpClient.post<UserToken>(this.urlLogin, dataForm)
         .pipe(map(userToken => {
-          this._$connectedUser.next(userToken.member)
-          console.log("pouet", userToken); return userToken}
+          this._$connectedUser.next(userToken.member); return userToken}
     ))
   }
 

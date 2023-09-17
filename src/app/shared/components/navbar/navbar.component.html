@@ -9,6 +9,7 @@
   <div class="flex flex-col items-center mb-6">
       <span *ngIf="connectedUser">Bonjour {{connectedUser.pseudo}}</span>
       <button *ngIf="!connectedUser" class="btn" routerLink="/account/login">Se connecter</button>
+      <span class="noAccount" *ngIf="!connectedUser">Pas encore de compte ?<a *ngIf="!connectedUser" routerLink="/account/register" class="register">Enregistrez vous</a></span>
       <button *ngIf="connectedUser" class="btn" (click)="logout()">Se déconnecter</button>
   </div>
   </div>

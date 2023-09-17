@@ -12,6 +12,7 @@ export class LoginComponent {
 
   loginForm : FormGroup;
   router = inject(Router)
+  match_IsFailed : boolean = true;
 
   constructor(private _fb : FormBuilder, private _swaggerService : SwaggerApiService) {
     this.loginForm = this._fb.group({
@@ -35,6 +36,9 @@ export class LoginComponent {
 
         error : (err) => {
           console.log("Problème au login", err)
+          if(this.match_IsFailed === true){
+            this.match_IsFailed = !this.match_IsFailed
+          }
         }
     })
     }
